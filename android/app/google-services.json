@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "473923520785",
+    "project_id": "somba-teka-9e603",
+    "storage_bucket": "somba-teka-9e603.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473923520785:android:2a1fba346b2bdac1d364b0",
+        "android_client_info": {
+          "package_name": "com.sombateka.userapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473923520785-tiejnpf6vk4pu72qc87hfoj60h99636i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sombateka.userapp",
+            "certificate_hash": "32e2eb87a71c9abbba9d4114c9c976b5b49aa835"
+          }
+        },
+        {
+          "client_id": "473923520785-7pkdft6kiaqb4hgc5uraf5roiolh7883.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4ClLzIgpKlTzR5I2hWMkheNoN8Mi3P3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "473923520785-7pkdft6kiaqb4hgc5uraf5roiolh7883.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "473923520785-843li2812avu4vh7k2iii2spicbg8pso.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sombateka.userapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
