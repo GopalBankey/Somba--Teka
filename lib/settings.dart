@@ -128,6 +128,7 @@ class AppSettings {
         bankAccountHolderName: bankAccountHolderName,
         bankAccountNumber: bankAccountNumber,
       ),
+
     ];
   }
 

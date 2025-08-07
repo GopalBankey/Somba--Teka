@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -384,6 +385,8 @@ class Api {
       Map<String, dynamic>? queryParameters,
       bool? useBaseUrl}) async {
     try {
+      // log( 'headers-----------${headers().toString()}');
+
       final Dio dio = Dio();
       dio.interceptors.add(NetworkRequestInterceptor());
       String mainurl = ((useBaseUrl ?? true) ? Constant.baseUrl : "") + url;

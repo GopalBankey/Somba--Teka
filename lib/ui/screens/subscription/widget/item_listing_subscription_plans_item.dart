@@ -250,6 +250,9 @@ class _ItemListingSubscriptionPlansItemState
           setState(() {
             _selectedGateway = selectedPaymentGateway;
           });
-        });
+        },
+
+    );
+
   }
 }

@@ -163,8 +163,8 @@ class SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     navigateCheck();
-    return hasInternet
-        ? BlocListener<FetchLanguageCubit, FetchLanguageState>(
+    if (hasInternet) {
+      return BlocListener<FetchLanguageCubit, FetchLanguageState>(
             listener: (context, state) {
               if (state is FetchLanguageSuccess) {
                 Map<String, dynamic> map = state.toMap();
@@ -219,9 +219,9 @@ class SplashScreenState extends State<SplashScreen>
                         Container(
                           alignment: AlignmentDirectional.center,
                           padding: EdgeInsets.only(top: 10.0),
-                          width: 150,
-                          height: 150,
-                          child: UiUtils.getSvg(AppIcons.splashLogo),
+                          child: ClipRRect(
+                              borderRadius: BorderRadiusGeometry.circular(20),
+                              child: UiUtils.getSvg(AppIcons.splashLogo,fit:BoxFit.cover,width: 120 ,height: 120)),
                         ),
                         Padding(
                           padding: EdgeInsets.only(top: 10.0),
@@ -239,11 +239,13 @@ class SplashScreenState extends State<SplashScreen>
                 ),
               ),
             ),
-          )
-        : NoInternet(
+          );
+    } else {
+      return NoInternet(
             onRetry: () {
               setState(() {});
             },
           );
+    }
   }
 }
