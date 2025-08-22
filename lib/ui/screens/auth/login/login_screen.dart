@@ -713,36 +713,36 @@ class LoginScreenState extends State<LoginScreen> {
             height: 12,
           ),
         ],
-        if (Constant.emailAuthentication == "1" ||
-            Constant.mobileAuthentication == "1")
-          ValueListenableBuilder(
-              valueListenable: isLoginWithMobile,
-              builder: (context, isMobileField, child) {
-                return UiUtils.buildButton(context, onPressed: () {
-                  isLoginWithMobile.value = !isLoginWithMobile.value;
-                },
-                    prefixWidget: Padding(
-                        padding: EdgeInsetsDirectional.only(end: 10.0),
-                        child: Icon(
-                          isMobileField ? Icons.email : Icons.phone,
-                          color: textDarkColor,
-                        )),
-                    showElevation: false,
-                    buttonColor: secondaryColor_,
-                    textColor: textDarkColor,
-                    border: context.watch<AppThemeCubit>().state.appTheme !=
-                            AppTheme.dark
-                        ? BorderSide(
-                            color: context.color.textDefaultColor
-                                .withValues(alpha: 0.5))
-                        : null,
-                    height: 46,
-                    radius: 8,
-                    buttonTitle: (isMobileField
-                            ? 'continueWithEmail'
-                            : 'continueWithMobile')
-                        .translate(context));
-              })
+        // if (Constant.emailAuthentication == "1" ||
+        //     Constant.mobileAuthentication == "1")
+        //   ValueListenableBuilder(
+        //       valueListenable: isLoginWithMobile,
+        //       builder: (context, isMobileField, child) {
+        //         return UiUtils.buildButton(context, onPressed: () {
+        //           isLoginWithMobile.value = !isLoginWithMobile.value;
+        //         },
+        //             prefixWidget: Padding(
+        //                 padding: EdgeInsetsDirectional.only(end: 10.0),
+        //                 child: Icon(
+        //                   isMobileField ? Icons.email : Icons.phone,
+        //                   color: textDarkColor,
+        //                 )),
+        //             showElevation: false,
+        //             buttonColor: secondaryColor_,
+        //             textColor: textDarkColor,
+        //             border: context.watch<AppThemeCubit>().state.appTheme !=
+        //                     AppTheme.dark
+        //                 ? BorderSide(
+        //                     color: context.color.textDefaultColor
+        //                         .withValues(alpha: 0.5))
+        //                 : null,
+        //             height: 46,
+        //             radius: 8,
+        //             buttonTitle: (isMobileField
+        //                     ? 'continueWithEmail'
+        //                     : 'continueWithMobile')
+        //                 .translate(context));
+        //       })
       ],
     );
   }

@@ -53,7 +53,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="PLACE_YOUR_ANDROID_GOOGLE_MAP_API_KEY_HERE" />
+            android:value="AIzaSyDMunbkIc9SwpeZfG-NUF8xKTJCmSkqrA0" />
 
 
         <activity

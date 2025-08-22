@@ -33,7 +33,8 @@ class AppSettings {
   static const String packageName = 'com.sombateka.userapp';
 
   //PLEASE ADD WITH https://
-  static const String hostUrl = "http://teka-somba-env.eba-ppfr9efm.eu-west-3.elasticbeanstalk.com/";
+  static const String hostUrl = "https://admin.somba-teka.com/";
+  // static const String hostUrl = "http://teka-somba-env.eba-ppfr9efm.eu-west-3.elasticbeanstalk.com/";
 
 
   ///API Setting
