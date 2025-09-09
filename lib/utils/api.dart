@@ -385,7 +385,7 @@ class Api {
       Map<String, dynamic>? queryParameters,
       bool? useBaseUrl}) async {
     try {
-      // log( 'headers-----------${headers().toString()}');
+      log( 'headers-----------${headers().toString()}');
 
       final Dio dio = Dio();
       dio.interceptors.add(NetworkRequestInterceptor());

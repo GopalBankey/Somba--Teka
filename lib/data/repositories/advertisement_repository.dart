@@ -52,7 +52,7 @@ class AdvertisementRepository {
       parameter: {
         "package_id": packageId,
         "payment_method": paymentMethod,
-        if (paymentMethod == "Paystack" || paymentMethod == "PhonePe")
+        if (paymentMethod == "Paystack" || paymentMethod == "PhonePe" || paymentMethod == "Kelpay")
           "platform_type": "app"
       },
     );

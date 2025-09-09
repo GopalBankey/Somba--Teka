@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:SombaTeka/data/cubits/subscription/assign_free_package_cubit.dart';
 import 'package:SombaTeka/data/cubits/subscription/get_payment_intent_cubit.dart';
+import 'package:SombaTeka/data/cubits/subscription/kelpay_payment_bloc.dart';
 import 'package:SombaTeka/data/helper/widgets.dart';
 import 'package:SombaTeka/data/model/subscription_package_model.dart';
 import 'package:SombaTeka/settings.dart';
@@ -156,6 +157,10 @@ class PlanHelper {
         packageId: subscriptionPackageModel.id!,
         price: subscriptionPackageModel.finalPrice!.toDouble(),
       );
+    } else if (selectedGateway == Constant.paymentTypeKelpay) {
+      print('sdfsdcscsc-------${state.paymentIntent["payment_gateway_response"]["transactionid"].toString()}');
+      PaymentGateways.showKelpayPaymentDialog(context, state.paymentIntent["payment_gateway_response"]["transactionid"].toString());
+
     }
   }
 
@@ -167,6 +172,8 @@ class PlanHelper {
       Constant.paymentTypeRazorpay => "Razorpay",
       Constant.paymentTypePhonepe => "PhonePe",
       Constant.paymentTypeFlutterwave => "FlutterWave",
+      Constant.paymentTypeFlutterwave => "FlutterWave",
+      Constant.paymentTypeKelpay => "Kelpay",
       _ => "",
     };
   }
@@ -404,6 +411,8 @@ class PaymentMethodTile extends StatelessWidget {
         return AppIcons.flutterwaveIcon;
       case Constant.paymentTypeBankTransfer:
         return AppIcons.bankTransferIcon;
+        case Constant.paymentTypeKelpay:
+        return AppIcons.kelpayIcon;
       default:
         return "";
     }

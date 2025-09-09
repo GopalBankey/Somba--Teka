@@ -1,13 +1,16 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:SombaTeka/data/cubits/subscription/kelpay_payment_bloc.dart';
 import 'package:SombaTeka/settings.dart';
 import 'package:SombaTeka/utils/constant.dart';
 import 'package:SombaTeka/utils/extensions/extensions.dart';
 import 'package:SombaTeka/utils/helper_utils.dart';
 import 'package:SombaTeka/utils/hive_utils.dart';
 import 'package:SombaTeka/utils/payment/gateaways/stripe_service.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:SombaTeka/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonepe_payment_sdk/phonepe_payment_sdk.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
@@ -157,6 +160,195 @@ class PaymentGateways {
       HelperUtils.showSnackBarMessage(
           context, "purchaseFailed".translate(context),
           type: MessageType.error);
+    }
+  }
+
+  static Future<void> showKelpayPaymentDialog(
+      BuildContext context, String txId) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) {
+        return BlocProvider(
+          create: (_) => KelpayPaymentBloc()..add(StartKelpayPayment(txId)),
+          child: BlocListener<KelpayPaymentBloc, KelpayPaymentState>(
+            listenWhen: (prev, curr) => prev.status != curr.status,
+            listener: (context, state) {
+              if (state.status == "timeout") {
+                // Auto close dialog at 5:05 if still pending
+                Navigator.of(context).pop();
+                HelperUtils.showSnackBarMessage(
+                    messageDuration: 5,
+                    context,
+                    "paymentStillPending".translate(context),
+                    type: MessageType.error);
+              }
+            },
+            child: BlocBuilder<KelpayPaymentBloc, KelpayPaymentState>(
+              builder: (context, state) {
+                return AlertDialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  title: buildStatusText(context, state, txId: txId),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "${"remainingTime".translate(context)}: ${state.remaining.inMinutes.remainder(60).toString().padLeft(2, '0')}:${state.remaining.inSeconds.remainder(60).toString().padLeft(2, '0')}",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      )
+                      // Text("Time Elapsed: ${_formatDuration(state.elapsed)}"),
+                    ],
+                  ),
+                  actions: [
+                    if (state.status == "succeed" ||
+                        state.status == "failed" ||
+                        state.status == "timeout")
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: const Text("Close"),
+                      ),
+                  ],
+                );
+              },
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  static Widget buildStatusText(BuildContext context, KelpayPaymentState state,
+      {required String txId}) {
+    switch (state.status) {
+      case "succeed":
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.check_circle, size: 50, color: Colors.green),
+            SizedBox(height: 10),
+            Text(
+              "paymentSuccessfullyCompleted".translate(context),
+              style:
+                  TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text(
+              "thankYouForSubscription".translate(context),
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12, color: Colors.black54),
+            ),
+          ],
+        );
+
+      case "failed":
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.cancel, size: 50, color: Colors.red),
+            SizedBox(height: 10),
+            Text(
+              "paymentFailed".translate(context),
+              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text(
+              "useAnotherPaymentMethod".translate(context),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 12,
+              ),
+            ),
+          ],
+        );
+
+      case "timeout":
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.hourglass_disabled, size: 50, color: Colors.orange),
+            SizedBox(height: 10),
+            Text(
+              "paymentTimeout".translate(context),
+              style:
+                  TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "pleaseTryAgain".translate(context),
+              style: TextStyle(color: Colors.black54),
+            ),
+          ],
+        );
+
+      case "pending":
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.check_circle_outline_outlined,
+              size: 50,
+              color: Colors.blue,
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              "paymentRequestSent".translate(context),
+              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Text(
+              "paymentPending".translate(context),
+              style:
+                  TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              "paymentRequestSentToYourMobile".translate(context),
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12),
+            ),
+            if (state.status == "pending") ...[
+              UiUtils.progress(),
+            ],
+            Text(
+              "waitingForTheConfirmation".translate(context),
+              style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey),
+            ),
+            Text(
+              '${"transactionId".translate(context)} ${txId}',
+              style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey),
+            ),
+          ],
+        );
+
+      default:
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 15,
+          children: [
+            Icon(
+              Icons.check_circle,
+              size: 50,
+              color: Colors.green,
+            ),
+            Text(
+              "paymentRequestSent".translate(context),
+              style:
+                  TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+            ),
+          ],
+        );
     }
   }
 }

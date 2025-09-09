@@ -322,6 +322,9 @@ class _SubscriptionPackageListScreenState
     AppSettings.payStackKey = state.payStackApiKey ?? "";
     AppSettings.payStackStatus = state.payStackStatus;
     AppSettings.razorpayKey = state.razorPayApiKey ?? "";
+    AppSettings.kelpayApiKey=state.kelpayApiKey ?? "";
+    AppSettings.kelpayPayCurrency=state.kelpayPayCurrency ?? "";
+    AppSettings.kelpayStatus=state.kelpayStatus;
     AppSettings.razorpayStatus = state.razorPayStatus;
     AppSettings.phonePeCurrency = state.phonePeCurrency ?? "";
     AppSettings.phonePeKey = state.phonePeKey ?? "";

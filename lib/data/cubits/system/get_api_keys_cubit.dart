@@ -14,6 +14,9 @@ class GetApiKeysCubit extends Cubit<GetApiKeysState> {
         razorPayApiKey: _getData(data, 'Razorpay', 'api_key'),
         razorPayCurrency: _getData(data, 'Razorpay', 'currency_code'),
         razorPayStatus: _getIntData(data, 'Razorpay', 'status'),
+        kelpayApiKey: _getData(data, 'Kelpay', 'api_key'),
+        kelpayPayCurrency: _getData(data, 'Kelpay', 'currency_code'),
+        kelpayStatus: _getIntData(data, 'Kelpay', 'status'),
         payStackApiKey: _getData(data, 'Paystack', 'api_key'),
         payStackCurrency: _getData(data, 'Paystack', 'currency_code'),
         payStackStatus: _getIntData(data, 'Paystack', 'status'),
@@ -59,10 +62,10 @@ class GetApiKeysSuccess extends GetApiKeysState {
   final String? razorPayApiKey, razorPayCurrency, payStackApiKey, payStackCurrency,
       stripeCurrency, stripePublishableKey, phonePeKey, phonePeCurrency,
       flutterWaveKey, flutterWaveCurrency, bankAccountHolder, bankAccountNumber,
-      bankName, bankIfscSwiftCode;
+      bankName, bankIfscSwiftCode,kelpayApiKey,kelpayPayCurrency;
 
   final int razorPayStatus, payStackStatus, stripeStatus, phonePeStatus,
-      flutterWaveStatus, bankTransferStatus;
+      flutterWaveStatus, bankTransferStatus,kelpayStatus;
 
   GetApiKeysSuccess({
     this.razorPayApiKey,
@@ -79,11 +82,14 @@ class GetApiKeysSuccess extends GetApiKeysState {
     this.bankAccountNumber,
     this.bankName,
     this.bankIfscSwiftCode,
+    this.kelpayApiKey,
+    this.kelpayPayCurrency,
     this.razorPayStatus = 0,
     this.payStackStatus = 0,
     this.stripeStatus = 0,
     this.phonePeStatus = 0,
     this.flutterWaveStatus = 0,
     this.bankTransferStatus = 0,
+    this.kelpayStatus=0
   });
 }

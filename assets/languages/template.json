@@ -634,5 +634,17 @@
   "adminEdited": "Admin Edited",
   "adEditedBy": "Ad Edited by",
   "admin": "Admin",
-  "jobClosed": "Job Closed"
+  "jobClosed": "Job Closed",
+  "paymentStillPending": "Payment still pending after 5 min.\nPlease contact support.",
+  "remainingTime": "Remaining Time",
+  "thankYouForSubscription": "Thank you! Your payment has been received successfully. Your subscription is now active.",
+  "paymentFailed": "Payment Failed!",
+  "useAnotherPaymentMethod.": "Your payment could not be processed. Please try again or use another payment method.",
+  "paymentTimeout": "Payment Timeout!",
+  "pleaseTryAgain": "Please try again.",
+  "paymentRequestSent": "Payment Request Sent!",
+  "paymentPending":"Payment Pending...",
+  "paymentRequestSentToYourMobile": "Payment request has been sent to your mobile. Please confirm the payment to complete your subscription.",
+   "waitingForTheConfirmation": "Waiting for the confirmation...",
+  "transactionId:": "Transaction ID"
 }

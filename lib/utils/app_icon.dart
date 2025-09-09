@@ -85,6 +85,7 @@ class AppIcons {
   static String blockedUserIcon = _svgPath("blockuser");
   static String faqsIcon = _svgPath("faqs");
   static String stripeIcon = _svgPath("payment/ic_stripe");
+  static String kelpayIcon = _svgPath("payment/ic_kelpay");
   static String razorpayIcon = _svgPath("payment/ic_razorpay");
   static String paystackIcon = _svgPath("payment/ic_paystack");
   static String phonePeIcon = _svgPath("payment/ic_phonepe");

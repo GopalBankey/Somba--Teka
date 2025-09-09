@@ -107,6 +107,14 @@ class AppSettings {
         type: "razorpay",
       ),
       PaymentGateway(
+        name: "Kelpay",
+        key: kelpayApiKey,
+        currency: kelpayPayCurrency,
+        status: kelpayStatus,
+      type: "kelpay"
+      ),
+
+      PaymentGateway(
         name: "PhonePe",
         key: phonePeKey,
         currency: phonePeCurrency,
@@ -137,6 +145,9 @@ class AppSettings {
   static String razorpayKey = "";
   static int razorpayStatus = 1;
   static String razorpayCurrency = "";
+  static String kelpayApiKey = "";
+  static String kelpayPayCurrency = "";
+  static int kelpayStatus = 1;
   static String payStackKey = "";
   static String payStackCurrency = "";
   static int payStackStatus = 1;

@@ -15,7 +15,9 @@ import 'package:SombaTeka/data/cubits/system/app_theme_cubit.dart';
 import 'package:SombaTeka/data/cubits/system/fetch_system_settings_cubit.dart';
 import 'package:SombaTeka/data/cubits/system/user_details.dart';
 import 'package:SombaTeka/data/model/system_settings_model.dart';
+import 'package:SombaTeka/settings.dart';
 import 'package:SombaTeka/ui/screens/main_activity.dart';
+import 'package:SombaTeka/ui/screens/subscription/payment_gatways.dart';
 import 'package:SombaTeka/ui/screens/widgets/blurred_dialog_box.dart';
 import 'package:SombaTeka/ui/theme/theme.dart';
 import 'package:SombaTeka/utils/api.dart';
@@ -871,6 +873,9 @@ class _ProfileScreenState extends State<ProfileScreen>
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          // IconButton(onPressed: () {
+          //   PaymentGateways.showKelpayPaymentDialog(context, "25082512092600026761");
+          //   }, icon: Icon(Icons.add)),
           Container(
               padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
               decoration: BoxDecoration(

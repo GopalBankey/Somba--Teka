@@ -4,7 +4,6 @@ import 'package:SombaTeka/data/model/system_settings_model.dart';
 import 'package:SombaTeka/settings.dart';
 import 'package:SombaTeka/ui/screens/filter_screen.dart';
 import 'package:flutter/material.dart';
-
 const String svgPath = 'assets/svg/';
 
 class Constant {
@@ -127,6 +126,8 @@ class Constant {
   static const String paymentTypePhonepe = "phonepe";
   static const String paymentTypeFlutterwave = "flutterwave";
   static const String paymentTypeBankTransfer = "bankTransfer";
+  static const String paymentTypeKelpay ="kelpay";
+
 //
   static const String itemTypeListing = "item_listing";
   static const String itemTypeAdvertisement = "advertisement";
