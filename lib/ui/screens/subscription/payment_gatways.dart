@@ -207,7 +207,9 @@ class PaymentGateways {
                         state.status == "failed" ||
                         state.status == "timeout")
                       TextButton(
-                        onPressed: () => Navigator.pop(context),
+                        onPressed: () {
+                          Navigator.of(context)
+                            .popUntil((route) => route.isFirst);},
                         child: const Text("Close"),
                       ),
                   ],

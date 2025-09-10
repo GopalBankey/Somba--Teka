@@ -47,7 +47,7 @@ class AppSettings {
   static const int hiddenAPIProcessDelay = 1;
 
 
-  static const String shareNavigationWebUrl = "sombatekaweb.wrteam.me";
+  static const String shareNavigationWebUrl = "somba-teka.com";
 
   static const MapType googleMapType = MapType.normal;
 

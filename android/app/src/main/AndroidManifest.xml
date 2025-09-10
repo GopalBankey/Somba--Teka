@@ -85,12 +85,12 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="sombatekaweb.wrteam.me"
+                    android:host="somba-teka.com"
                     android:pathPattern="/product-details/.*"
                     android:scheme="sombateka" />
 
                 <data
-                    android:host="sombatekaweb.wrteam.me"
+                    android:host="somba-teka.com"
                     android:pathPattern="/seller/.*"
                     android:scheme="sombateka" />
 

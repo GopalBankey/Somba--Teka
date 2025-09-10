@@ -228,7 +228,7 @@ class UserProfileScreenState extends State<UserProfileScreen> {
           ),
           CustomTextFormField(
             controller: phoneController,
-            validator: CustomTextFieldValidator.phoneNumber,
+            // validator: CustomTextFieldValidator.phoneNumber,
             keyboard: TextInputType.phone,
             isReadOnly:
                 HiveUtils.getUserDetails().type == AuthenticationType.phone.name
@@ -240,24 +240,24 @@ class UserProfileScreenState extends State<UserProfileScreen> {
               setState(() {});
             },
             isMobileRequired: false,
-            fixedPrefix: GestureDetector(
-              onTap: () {
-                if (HiveUtils.getUserDetails().type !=
-                    AuthenticationType.phone.name) {
-                  showCountryCode();
-                }
-              },
-              child: Container(
-                  width: 55,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
-                  alignment: Alignment.center,
-                  child: CustomText(
-                    formatCountryCode(countryCode!),
-                    fontSize: context.font.large,
-                    textAlign: TextAlign.center,
-                  )),
-            ),
+            // fixedPrefix: GestureDetector(
+            //   onTap: () {
+            //     if (HiveUtils.getUserDetails().type !=
+            //         AuthenticationType.phone.name) {
+            //       showCountryCode();
+            //     }
+            //   },
+            //   child: Container(
+            //       width: 55,
+            //       padding:
+            //           const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
+            //       alignment: Alignment.center,
+            //       child: CustomText(
+            //         formatCountryCode(countryCode!),
+            //         fontSize: context.font.large,
+            //         textAlign: TextAlign.center,
+            //       )),
+            // ),
             hintText: "phoneNumber".translate(context),
           )
         ]);
